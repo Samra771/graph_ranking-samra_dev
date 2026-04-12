@@ -1,0 +1,19 @@
+Statistical Significance Results
+==================================================
+
+GNN Mixed-trained vs Degree Centrality
+Betweenness centrality, N=200 nodes, 200 test graphs
+
+BA Graphs:
+  GNN tau    : 0.933726 +/- 0.004831
+  Degree tau : 0.864397 +/- 0.010377
+  t-statistic: 99.8826
+  p-value    : 0.00000000
+  Cohen d    : 6.6809
+
+GRP Graphs:
+  GNN tau    : 0.878979 +/- 0.009863
+  Degree tau : 0.865006 +/- 0.017575
+  t-statistic: 11.9321
+  p-value    : 0.00000000
+  Cohen d    : 0.7951
