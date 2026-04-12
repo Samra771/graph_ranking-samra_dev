@@ -53,7 +53,7 @@ class GNN_Close(nn.Module):
           gc1 uses adj      (initial embedding from raw adjacency)
           gc2..gc7 use adj_mod  (message passing through masked adjacency)
 
-        L2 normalisation is applied at every layer except the last.
+        L2 normalization is applied at every layer except the last.
         Scores from all 7 layers are summed to produce the final ranking.
         """
 
@@ -64,7 +64,7 @@ class GNN_Close(nn.Module):
         x_4 = F.normalize(F.relu(self.gc4(x_3, adj_mod)),   p=2, dim=1)
         x_5 = F.normalize(F.relu(self.gc5(x_4, adj_mod)),   p=2, dim=1)
         x_6 = F.normalize(F.relu(self.gc6(x_5, adj_mod)),   p=2, dim=1)
-        x_7 = F.relu(self.gc7(x_6, adj_mod))   # No normalisation on last layer
+        x_7 = F.relu(self.gc7(x_6, adj_mod))   # No normalization on last layer
 
         # ── Score computation — one score per layer ───────────────────────────
         score_1 = self.score_layer(x_1, self.dropout)

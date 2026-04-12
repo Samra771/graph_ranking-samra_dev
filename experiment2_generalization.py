@@ -1,31 +1,34 @@
 """
-experiment2_generalisation.py
+experiment2_generalization.py
 ==============================
-Generalisation experiment for the journal paper.
-
-Tests whether GNNs trained on Erdos-Renyi graphs generalise to:
+Generalization experiment to test whether GNNs trained on Erdos-Renyi graphs can generalize to:
   - Barabasi-Albert (scale-free) graphs
   - Gaussian Random Partition graphs (community structure)
   - Mixed graph types
 
-This is critical for a journal paper because:
+Tests whether GNNs trained on Erdos-Renyi graphs generalize to:
+  - Barabasi-Albert (scale-free) graphs
+  - Gaussian Random Partition graphs (community structure)
+  - Mixed graph types
+
+This is critical for a point of interest because:
   Real-world networks are NOT Erdos-Renyi. If your GNN only works on
   the graph type it was trained on, the contribution is limited.
-  If it generalises, it is a much stronger result.
+  If it generalizes, it is a much stronger result.
 
 Three experimental conditions:
-  Condition A: Train ER → Test ER       (in-distribution — your existing result)
-  Condition B: Train ER → Test BA       (out-of-distribution generalisation)
-  Condition C: Train ER → Test GRP      (out-of-distribution generalisation)
-  Condition D: Train Mixed → Test Mixed (cross-type training)
+  Condition A: Train ER - Test ER       (in-distribution — your existing result)
+  Condition B: Train ER - Test BA       (out-of-distribution generalization)
+  Condition C: Train ER - Test GRP      (out-of-distribution generalization)
+  Condition D: Train Mixed - Test Mixed (cross-type training)
 
 Output:
-  - Generalisation table (CSV)
+  - Generalization table (CSV)
   - Heatmap of tau across train/test type combinations
-  - Saved to ./paper_figures_generalisation/
+  - Saved to ./paper_figures_generalization/
 
 Run:
-  python experiment2_generalisation.py
+  python experiment2_generalization.py
 """
 
 import os
@@ -70,12 +73,12 @@ WEIGHT_DECAY     = 0.01
 BATCH_SIZE       = 16
 MODEL_SIZE       = GRAPH_NODES
 
-OUTPUT_DIR = "./paper_figures_generalisation"
+OUTPUT_DIR = "./paper_figures_generalization"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 print(f"\n{'='*65}")
-print(f"  EXPERIMENT 2: Generalisation Across Graph Types")
+print(f"  EXPERIMENT 2: Generalization Across Graph Types")
 print(f"{'='*65}")
 print(f"  Device      : {device}")
 print(f"  Train graphs: {TRAIN_GRAPHS} per type")
@@ -229,9 +232,9 @@ def evaluate_model(model, adjs, adj2s, cents, ns):
 # CONDITION A: Load pre-trained ER model, test on all types
 # ═════════════════════════════════════════════════════════════════════════════
 print("CONDITION A: Pre-trained ER model → test on all graph types")
-print("  (Tests out-of-distribution generalisation of your existing model)")
+print("  (Tests out-of-distribution generalization of your existing model)")
 
-results_generalisation = {}
+results_generalization = {}
 
 # Load pre-trained betweenness model
 bet_network = GNN_Bet(ninput=MODEL_SIZE, nhid=HIDDEN_LAYERS, dropout=DROPOUT,
@@ -248,9 +251,9 @@ if os.path.exists("./betweenness_model.pth"):
         print(f"  Testing on {test_type} graphs...")
         adjs, adj2s, cents, ns = build_dataset(test_type, TEST_GRAPHS, "betweenness")
         mean_kt, std_kt = evaluate_model(bet_model, adjs, adj2s, cents, ns)
-        key = f"ER→{test_type} (Betweenness)"
-        results_generalisation[key] = (mean_kt, std_kt)
-        print(f"    Kendall τ = {mean_kt:.4f} ± {std_kt:.4f}")
+        key = f"ER->{test_type} (Betweenness)"
+        results_generalization[key] = (mean_kt, std_kt)
+        print(f"    Kendall tau = {mean_kt:.4f} +/- {std_kt:.4f}")
 else:
     print("  betweenness_model.pth not found — skipping pre-trained evaluation")
 
@@ -269,15 +272,15 @@ if os.path.exists("./closeness_model.pth"):
         print(f"  Testing on {test_type} graphs (closeness)...")
         adjs, adj2s, cents, ns = build_dataset(test_type, TEST_GRAPHS, "closeness")
         mean_kt, std_kt = evaluate_model(close_model, adjs, adj2s, cents, ns)
-        key = f"ER→{test_type} (Closeness)"
-        results_generalisation[key] = (mean_kt, std_kt)
-        print(f"    Kendall τ = {mean_kt:.4f} ± {std_kt:.4f}")
+        key = f"ER->{test_type} (Closeness)"
+        results_generalization[key] = (mean_kt, std_kt)
+        print(f"    Kendall tau = {mean_kt:.4f} +/- {std_kt:.4f}")
 
 # ═════════════════════════════════════════════════════════════════════════════
 # CONDITION D: Train on Mixed types, test on all types
-# ═════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════
 print("\nCONDITION D: Train on Mixed (ER+BA+GRP) → test on all types")
-print("  (Tests whether diversity in training improves generalisation)")
+print("  (Tests whether diversity in training improves generalization)")
 
 # Build mixed training set for betweenness
 print("  Building mixed training dataset (betweenness)...")
@@ -315,27 +318,26 @@ for test_type in ["ER", "BA", "GRP"]:
     print(f"  Testing mixed model on {test_type}...")
     adjs, adj2s, cents, ns = build_dataset(test_type, TEST_GRAPHS, "betweenness")
     mean_kt, std_kt = evaluate_model(mixed_bet, adjs, adj2s, cents, ns)
-    key = f"Mixed→{test_type} (Betweenness)"
-    results_generalisation[key] = (mean_kt, std_kt)
-    print(f"    Kendall τ = {mean_kt:.4f} ± {std_kt:.4f}")
+    key = f"Mixed->{test_type} (Betweenness)"
+    results_generalization[key] = (mean_kt, std_kt)
+    print(f"    Kendall tau = {mean_kt:.4f} +/- {std_kt:.4f}")
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PRINT AND SAVE RESULTS
-# ═════════════════════════════════════════════════════════════════════════════
-print(f"\n{'='*65}")
-print(f"  GENERALISATION RESULTS")
+# ══════════════════════
+print(f"  GENERALIZATION RESULTS")
 print(f"{'='*65}")
-for key, (mean, std) in results_generalisation.items():
-    print(f"  {key:<40} τ = {mean:.4f} ± {std:.4f}")
+for key, (mean, std) in results_generalization.items():
+    print(f"  {key:<40} tau = {mean:.4f} +/- {std:.4f}")
 
 # Save CSV
-with open(f"{OUTPUT_DIR}/generalisation_results.csv", "w") as f:
+with open(f"{OUTPUT_DIR}/generalization_results.csv", "w", encoding="utf-8") as f:
     f.write("Condition,Mean KT,Std KT\n")
-    for key, (mean, std) in results_generalisation.items():
+    for key, (mean, std) in results_generalization.items():
         f.write(f"{key},{mean:.6f},{std:.6f}\n")
-print(f"\n  Saved: {OUTPUT_DIR}/generalisation_results.csv")
+print(f"\n  Saved: {OUTPUT_DIR}/generalization_results.csv")
 
-# ── Figure: Generalisation heatmap ────────────────────────────────────────────
+# ── Figure: Generalization heatmap ────────────────────────────────────────────
 STYLE = {"figure.dpi": 300, "font.family": "serif", "font.size": 11}
 plt.rcParams.update(STYLE)
 
@@ -345,18 +347,18 @@ test_types  = ["ER", "BA", "GRP"]
 bet_matrix  = np.zeros((len(train_types), len(test_types)))
 for ti, tt in enumerate(train_types):
     for tj, te in enumerate(test_types):
-        key = f"{tt}→{te} (Betweenness)"
-        if key in results_generalisation:
-            bet_matrix[ti, tj] = results_generalisation[key][0]
+        key = f"{tt}->{te} (Betweenness)"
+        if key in results_generalization:
+            bet_matrix[ti, tj] = results_generalization[key][0]
 
 fig, ax = plt.subplots(figsize=(7, 4))
 im = ax.imshow(bet_matrix, cmap="YlGn", vmin=0, vmax=1, aspect="auto")
-plt.colorbar(im, ax=ax, label="Kendall τ")
+plt.colorbar(im, ax=ax, label="Kendall tau")
 ax.set_xticks(range(len(test_types)));  ax.set_xticklabels(test_types)
 ax.set_yticks(range(len(train_types))); ax.set_yticklabels(train_types)
 ax.set_xlabel("Test Graph Type")
 ax.set_ylabel("Training Graph Type")
-ax.set_title("Betweenness Centrality: Generalisation Across Graph Types")
+ax.set_title("Betweenness Centrality: Generalization Across Graph Types")
 
 for i in range(len(train_types)):
     for j in range(len(test_types)):
@@ -365,7 +367,7 @@ for i in range(len(train_types)):
                 color="black" if bet_matrix[i,j] > 0.4 else "white")
 
 fig.tight_layout()
-fig.savefig(f"{OUTPUT_DIR}/fig_generalisation_heatmap.png", dpi=300, bbox_inches="tight")
+fig.savefig(f"{OUTPUT_DIR}/fig_generalization_heatmap.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
-print(f"  Saved: fig_generalisation_heatmap.png")
-print(f"\n  All generalisation figures saved to: {OUTPUT_DIR}/\n")
+print(f"  Saved: fig_generalization_heatmap.png")
+print(f"\n  All generalization figures saved to: {OUTPUT_DIR}/\n")

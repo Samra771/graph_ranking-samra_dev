@@ -6,7 +6,7 @@ Complete experiment script for GNN Betweenness Centrality Approximation.
 This script:
 1. Generates 2000 Erdos-Renyi graphs with 200 nodes
 2. Trains the GNN model for betweenness centrality
-3. Saves training curves (loss, Kendall tau) as paper-ready figures
+3. Saves training curves (loss, Kendall tau)
 4. Generates comparison plots (GNN predictions vs NetworkX ground truth)
 
 Run from your repo folder:
@@ -261,9 +261,9 @@ torch.save(model.state_dict(), MODEL_SAVE_PATH)
 print(f"  Model saved to {MODEL_SAVE_PATH}\n")
 
 # ═════════════════════════════════════════════════════════════════════════════
-# STEP 4 — GENERATE PAPER FIGURES
+# STEP 4 — GENERATE FIGURES
 # ═════════════════════════════════════════════════════════════════════════════
-print("STEP 4: Generating paper figures...")
+print("STEP 4: Generating figures...")
 
 STYLE = {
     "figure.dpi"        : 300,

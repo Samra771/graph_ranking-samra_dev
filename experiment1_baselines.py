@@ -1,8 +1,6 @@
 """
 experiment1_baselines.py
 ========================
-Baseline comparison experiment for the journal paper.
-
 Compares GNN betweenness and closeness centrality approximations against:
 
 Baseline 1 — Degree Centrality (trivial baseline)
@@ -28,10 +26,10 @@ Output:
 Run:
   python experiment1_baselines.py
 
-Note: This script loads your TRAINED models from:
+Note: This script loads yourTRAINED models from:
   ./betweenness_model.pth
   ./closeness_model.pth
-Make sure you have run run_experiment.py and run_experiment_closeness_fixed.py
+Make sure you have run run_experiment.py and run_experiment_closeness.py
 first so these model files exist.
 """
 
@@ -430,4 +428,3 @@ plt.close(fig)
 print(f"  Saved: fig_brandes_vs_gnn.png")
 
 print(f"\n  All baseline figures saved to: {OUTPUT_DIR}/")
-print(f"  Use baseline_comparison.csv for the paper comparison table.\n")

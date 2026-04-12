@@ -5,9 +5,7 @@ Run this script AFTER experiment2_generalisation.py has completed.
 
 It takes the results you already computed and:
 1. Saves them to CSV correctly (UTF-8 encoding — fixes Windows error)
-2. Generates the generalisation heatmap figures for the paper
-3. Prints a clean summary table ready to copy into the paper
-
+2. Generates the generalisation heatmap figures for betweenness and closeness centrality.
 No need to re-run the expensive training — just paste your results below.
 """
 
@@ -188,12 +186,12 @@ plt.close(fig)
 print(f"Saved: {path}")
 
 # ═════════════════════════════════════════════════════════════════════════════
-# PRINT PAPER-READY TABLE
+# PRINT TABLE
 # ═════════════════════════════════════════════════════════════════════════════
 print(f"\n{'='*65}")
-print(f"  PAPER-READY RESULTS TABLE")
+print(f"  RESULTS TABLE")
 print(f"{'='*65}")
-print(f"\n  Table: Betweenness Centrality Generalisation\n")
+print(f"\n  Table: Betweenness Centrality Generalization\n")
 print(f"  {'Training':15} {'Test: ER':>15} {'Test: BA':>15} {'Test: GRP':>15}")
 print(f"  {'-'*60}")
 for train in ["ER", "Mixed"]:
@@ -204,7 +202,7 @@ for train in ["ER", "Mixed"]:
         row += f"  {m:.3f}+/-{s:.3f}"
     print(row)
 
-print(f"\n  Table: Closeness Centrality Generalisation\n")
+print(f"\n  Table: Closeness Centrality Generalization\n")
 print(f"  {'Training':15} {'Test: ER':>15} {'Test: BA':>15} {'Test: GRP':>15}")
 print(f"  {'-'*60}")
 vals  = [results[f"ER->{t} (Closeness)"] for t in test_types]
@@ -214,10 +212,10 @@ for m, s in vals:
 print(row)
 
 # ═════════════════════════════════════════════════════════════════════════════
-# PRINT KEY FINDINGS FOR PAPER WRITEUP
+# PRINT KEY FINDINGS 
 # ═════════════════════════════════════════════════════════════════════════════
 print(f"\n{'='*65}")
-print(f"  KEY FINDINGS FOR PAPER")
+print(f"  KEY FINDINGS")
 print(f"{'='*65}")
 
 bet_er_ba_drop  = results["ER->ER (Betweenness)"][0] - results["ER->BA (Betweenness)"][0]
@@ -229,7 +227,7 @@ print(f"""
   BETWEENNESS:
   - ER-trained model drops only {bet_er_ba_drop:.3f} tau when tested on BA graphs
     (ER: {results['ER->ER (Betweenness)'][0]:.3f} -> BA: {results['ER->BA (Betweenness)'][0]:.3f})
-    This is strong out-of-distribution generalisation.
+    This is strong out-of-distribution generalization.
 
   - ER-trained model drops {bet_er_grp_drop:.3f} tau on GRP (community structure graphs)
     (ER: {results['ER->ER (Betweenness)'][0]:.3f} -> GRP: {results['ER->GRP (Betweenness)'][0]:.3f})
@@ -253,6 +251,6 @@ print(f"""
 
 print(f"  All figures saved to: {OUTPUT_DIR}/")
 print(f"  Use these files in your paper:")
-print(f"    fig_generalisation_heatmap_betweenness.png  -> Figure 4.8")
-print(f"    fig_generalisation_heatmap_closeness.png    -> Figure 4.9")
-print(f"    fig_generalisation_bar_chart.png            -> Figure 4.10")
+print(f"    fig_generalization_heatmap_betweenness.png  -> Figure 4.8")
+print(f"    fig_generalization_heatmap_closeness.png    -> Figure 4.9")
+print(f"    fig_generalization_bar_chart.png            -> Figure 4.10")

@@ -1,7 +1,6 @@
 """
-run_experiment_closeness.py  (FIXED VERSION)
+run_experiment_closeness.py  
 ============================================
-Fixes applied vs previous version:
 
 Problem 1 — NaN loss:
   The column-masked adjacency (adj_mod) was producing zero-vectors in many

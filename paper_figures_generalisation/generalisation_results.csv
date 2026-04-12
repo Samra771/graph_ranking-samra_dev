@@ -1,10 +1,1 @@
 Condition,Mean KT,Std KT
-ER->ER (Betweenness),0.854400,0.010400
-ER->BA (Betweenness),0.839900,0.011900
-ER->GRP (Betweenness),0.729300,0.048500
-ER->ER (Closeness),0.826000,0.011200
-ER->BA (Closeness),0.603700,0.027300
-ER->GRP (Closeness),0.017100,0.049400
-Mixed->ER (Betweenness),0.886700,0.009500
-Mixed->BA (Betweenness),0.933400,0.004800
-Mixed->GRP (Betweenness),0.878100,0.010300
