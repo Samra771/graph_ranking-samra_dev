@@ -1,0 +1,16 @@
+Graph Type,Method,Centrality,Mean KT,Std KT
+ER,Degree Centrality,Betweenness,0.885485,0.009282
+ER,GNN (ER-trained),Betweenness,0.853842,0.009757
+ER,GNN (Mixed-trained),Betweenness,0.886642,0.009454
+ER,Degree Centrality,Closeness,0.922772,0.009738
+ER,GNN (ER-trained),Closeness,0.823728,0.012435
+BA,Degree Centrality,Betweenness,0.865340,0.010462
+BA,GNN (ER-trained),Betweenness,0.840528,0.010677
+BA,GNN (Mixed-trained),Betweenness,0.933311,0.004857
+BA,Degree Centrality,Closeness,0.881842,0.011618
+BA,GNN (ER-trained),Closeness,0.602426,0.025891
+GRP,Degree Centrality,Betweenness,0.863566,0.017245
+GRP,GNN (ER-trained),Betweenness,0.731308,0.045242
+GRP,GNN (Mixed-trained),Betweenness,0.879423,0.010177
+GRP,Degree Centrality,Closeness,0.836681,0.016002
+GRP,GNN (ER-trained),Closeness,0.011638,0.050229

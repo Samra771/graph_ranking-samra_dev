@@ -1,0 +1,7 @@
+Method,KT Betweenness,KT Bet Std,KT Closeness,KT Close Std,Time Bet (ms),Time Close (ms)
+Random Ranking,-0.0013,0.0499,-0.0018,0.0515,0.00,0.00
+Degree Centrality,0.8866,0.0096,0.9226,0.0101,0.07,0.07
+GNN,0.8552,0.0098,0.8255,0.0117,9.76,8.68
+Brandes k=10,0.2861,0.0438,N/A,N/A,8.04,N/A
+Brandes k=20,0.3775,0.0380,N/A,N/A,15.19,N/A
+Brandes k=50,0.5522,0.0324,N/A,N/A,34.85,N/A
