@@ -1,0 +1,176 @@
+Hyperparameter Grid Search Log
+==================================================
+
+Config 1: lr=0.001, dropout=0.2, hidden=10, wd=0.0
+  Val KT = 0.859582 +/- 0.010672 (223s)
+
+Config 2: lr=0.001, dropout=0.2, hidden=10, wd=0.01
+  Val KT = 0.822909 +/- 0.012614 (185s)
+
+Config 3: lr=0.001, dropout=0.2, hidden=20, wd=0.0
+  Val KT = 0.890987 +/- 0.009376 (290s)
+
+Config 4: lr=0.001, dropout=0.2, hidden=20, wd=0.01
+  Val KT = 0.882393 +/- 0.008696 (244s)
+
+Config 5: lr=0.001, dropout=0.2, hidden=40, wd=0.0
+  Val KT = 0.900203 +/- 0.006823 (432s)
+
+Config 6: lr=0.001, dropout=0.2, hidden=40, wd=0.01
+  Val KT = 0.889984 +/- 0.007741 (469s)
+
+Config 7: lr=0.001, dropout=0.4, hidden=10, wd=0.0
+  Val KT = 0.805498 +/- 0.012981 (255s)
+
+Config 8: lr=0.001, dropout=0.4, hidden=10, wd=0.01
+  Val KT = 0.814684 +/- 0.011072 (226s)
+
+Config 9: lr=0.001, dropout=0.4, hidden=20, wd=0.0
+  Val KT = 0.839423 +/- 0.009294 (276s)
+
+Config 10: lr=0.001, dropout=0.4, hidden=20, wd=0.01
+  Val KT = 0.868536 +/- 0.009836 (285s)
+
+Config 11: lr=0.001, dropout=0.4, hidden=40, wd=0.0
+  Val KT = 0.873822 +/- 0.007163 (424s)
+
+Config 12: lr=0.001, dropout=0.4, hidden=40, wd=0.01
+  Val KT = 0.904910 +/- 0.006031 (435s)
+
+Config 13: lr=0.001, dropout=0.6, hidden=10, wd=0.0
+  Val KT = 0.756813 +/- 0.013395 (212s)
+
+Config 14: lr=0.001, dropout=0.6, hidden=10, wd=0.01
+  Val KT = 0.729002 +/- 0.020145 (220s)
+
+Config 15: lr=0.001, dropout=0.6, hidden=20, wd=0.0
+  Val KT = 0.790795 +/- 0.012014 (270s)
+
+Config 16: lr=0.001, dropout=0.6, hidden=20, wd=0.01
+  Val KT = 0.826972 +/- 0.013501 (275s)
+
+Config 17: lr=0.001, dropout=0.6, hidden=40, wd=0.0
+  Val KT = 0.827556 +/- 0.011525 (405s)
+
+Config 18: lr=0.001, dropout=0.6, hidden=40, wd=0.01
+  Val KT = 0.880234 +/- 0.007878 (390s)
+
+Config 19: lr=0.0001, dropout=0.2, hidden=10, wd=0.0
+  Val KT = 0.569417 +/- 0.028736 (199s)
+
+Config 20: lr=0.0001, dropout=0.2, hidden=10, wd=0.01
+  Val KT = 0.571308 +/- 0.031060 (197s)
+
+Config 21: lr=0.0001, dropout=0.2, hidden=20, wd=0.0
+  Val KT = 0.665360 +/- 0.025768 (255s)
+
+Config 22: lr=0.0001, dropout=0.2, hidden=20, wd=0.01
+  Val KT = 0.686185 +/- 0.024403 (246s)
+
+Config 23: lr=0.0001, dropout=0.2, hidden=40, wd=0.0
+  Val KT = 0.790243 +/- 0.017180 (400s)
+
+Config 24: lr=0.0001, dropout=0.2, hidden=40, wd=0.01
+  Val KT = 0.767202 +/- 0.014963 (410s)
+
+Config 25: lr=0.0001, dropout=0.4, hidden=10, wd=0.0
+  Val KT = 0.333504 +/- 0.036245 (195s)
+
+Config 26: lr=0.0001, dropout=0.4, hidden=10, wd=0.01
+  Val KT = 0.413141 +/- 0.038402 (197s)
+
+Config 27: lr=0.0001, dropout=0.4, hidden=20, wd=0.0
+  Val KT = 0.645957 +/- 0.026577 (249s)
+
+Config 28: lr=0.0001, dropout=0.4, hidden=20, wd=0.01
+  Val KT = 0.535158 +/- 0.031430 (256s)
+
+Config 29: lr=0.0001, dropout=0.4, hidden=40, wd=0.0
+  Val KT = 0.694015 +/- 0.020469 (398s)
+
+Config 30: lr=0.0001, dropout=0.4, hidden=40, wd=0.01
+  Val KT = 0.736800 +/- 0.020048 (383s)
+
+Config 31: lr=0.0001, dropout=0.6, hidden=10, wd=0.0
+  Val KT = 0.236371 +/- 0.044497 (194s)
+
+Config 32: lr=0.0001, dropout=0.6, hidden=10, wd=0.01
+  Val KT = 0.224419 +/- 0.038741 (192s)
+
+Config 33: lr=0.0001, dropout=0.6, hidden=20, wd=0.0
+  Val KT = 0.472761 +/- 0.038363 (243s)
+
+Config 34: lr=0.0001, dropout=0.6, hidden=20, wd=0.01
+  Val KT = 0.447375 +/- 0.036452 (231s)
+
+Config 35: lr=0.0001, dropout=0.6, hidden=40, wd=0.0
+  Val KT = 0.687003 +/- 0.024150 (355s)
+
+Config 36: lr=0.0001, dropout=0.6, hidden=40, wd=0.01
+  Val KT = 0.695145 +/- 0.026090 (366s)
+
+Config 37: lr=5e-05, dropout=0.2, hidden=10, wd=0.0
+  Val KT = 0.438855 +/- 0.039173 (194s)
+
+Config 38: lr=5e-05, dropout=0.2, hidden=10, wd=0.01
+  Val KT = 0.432511 +/- 0.040161 (163s)
+
+Config 39: lr=5e-05, dropout=0.2, hidden=20, wd=0.0
+  Val KT = 0.617594 +/- 0.029289 (215s)
+
+Config 40: lr=5e-05, dropout=0.2, hidden=20, wd=0.01
+  Val KT = 0.635437 +/- 0.025183 (213s)
+
+Config 41: lr=5e-05, dropout=0.2, hidden=40, wd=0.0
+  Val KT = 0.729622 +/- 0.021428 (314s)
+
+Config 42: lr=5e-05, dropout=0.2, hidden=40, wd=0.01
+  Val KT = 0.704867 +/- 0.019661 (308s)
+
+Config 43: lr=5e-05, dropout=0.4, hidden=10, wd=0.0
+  Val KT = 0.216002 +/- 0.043211 (168s)
+
+Config 44: lr=5e-05, dropout=0.4, hidden=10, wd=0.01
+  Val KT = 0.267964 +/- 0.035082 (203s)
+
+Config 45: lr=5e-05, dropout=0.4, hidden=20, wd=0.0
+  Val KT = 0.488335 +/- 0.037009 (257s)
+
+Config 46: lr=5e-05, dropout=0.4, hidden=20, wd=0.01
+  Val KT = 0.442184 +/- 0.040311 (251s)
+
+Config 47: lr=5e-05, dropout=0.4, hidden=40, wd=0.0
+  Val KT = 0.632987 +/- 0.023910 (392s)
+
+Config 48: lr=5e-05, dropout=0.4, hidden=40, wd=0.01
+  Val KT = 0.611028 +/- 0.026607 (411s)
+
+Config 49: lr=5e-05, dropout=0.6, hidden=10, wd=0.0
+  Val KT = 0.086050 +/- 0.045803 (213s)
+
+Config 50: lr=5e-05, dropout=0.6, hidden=10, wd=0.01
+  Val KT = 0.125303 +/- 0.043830 (208s)
+
+Config 51: lr=5e-05, dropout=0.6, hidden=20, wd=0.0
+  Val KT = 0.293826 +/- 0.037955 (269s)
+
+Config 52: lr=5e-05, dropout=0.6, hidden=20, wd=0.01
+  Val KT = 0.257804 +/- 0.042308 (271s)
+
+Config 53: lr=5e-05, dropout=0.6, hidden=40, wd=0.0
+  Val KT = 0.545528 +/- 0.031795 (415s)
+
+Config 54: lr=5e-05, dropout=0.6, hidden=40, wd=0.01
+  Val KT = 0.551891 +/- 0.028677 (404s)
+
+
+BEST CONFIGURATION:
+{
+  "config_num": 12,
+  "learning_rate": 0.001,
+  "dropout": 0.4,
+  "hidden_size": 40,
+  "weight_decay": 0.01,
+  "val_kt_mean": 0.9049095181044866,
+  "val_kt_std": 0.006031149674804187
+}
