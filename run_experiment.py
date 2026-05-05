@@ -49,10 +49,10 @@ GRAPH_SPARSENESS = 0.15      # Edge probability for Erdos-Renyi (p = 0.15)
 TOTAL_GRAPHS     = 2000      # Total graphs generated (1600 train, 400 test)
 TRAIN_RATIO      = 0.80      # 80% training, 20% test
 
-HIDDEN_LAYERS    = 20        # GNN hidden layer size
+HIDDEN_LAYERS    = 40        # GNN hidden layer size
 EPOCHS           = 100       # Training epochs
-LEARNING_RATE    = 1e-4      # Adam learning rate
-DROPOUT          = 0.2       # Dropout probability
+LEARNING_RATE    = 1e-3      # Adam learning rate
+DROPOUT          = 0.4      # Dropout probability
 WEIGHT_DECAY     = 0.01      # L2 regularisation coefficient
 BATCH_SIZE       = 16        # Graphs per batch update
 
@@ -431,7 +431,7 @@ fig.suptitle("GNN Betweenness Centrality — Training Results", fontsize=13, y=1
 fig.tight_layout()
 fig.savefig(f"{OUTPUT_DIR}/fig_training_grid.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
-print(f"  Saved: fig_training_grid.png  (combined 2x2 for paper Figure 4.1)")
+print(f"  Saved: fig_training_grid.png  ")
 
 # ═════════════════════════════════════════════════════════════════════════════
 # STEP 5 — PRINT FINAL SUMMARY
@@ -452,15 +452,6 @@ print(f"  Kendall tau (mean)   : {final_kt_mean:.4f}")
 print(f"  Kendall tau (std)    : {final_kt_std:.4f}")
 print(f"{'='*60}")
 print(f"\n  All figures saved to: {OUTPUT_DIR}/")
-print(f"  Files generated:")
-print(f"    fig_training_loss.png         — use as Figure 4.1(a)")
-print(f"    fig_test_loss.png             — use as Figure 4.1(b)")
-print(f"    fig_relative_loss_diff.png    — use as Figure 4.1(c)")
-print(f"    fig_kendall_tau.png           — use as Figure 4.1(d)")
-print(f"    fig_training_grid.png         — combined 2x2 for Figure 4.1")
-print(f"    fig_betweenness_comparison.png — use as Figure 4.2")
-print(f"\n  Copy these into your paper at the locations marked in Section 4.6\n")
-
 # ─ Save numerical results to text file ───────────────────────────────────────
 results_path = f"{OUTPUT_DIR}/results_summary.txt"
 with open(results_path, "w") as f:
