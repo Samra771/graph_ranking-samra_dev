@@ -1,0 +1,9 @@
+{
+  "config_num": 5,
+  "learning_rate": 0.001,
+  "dropout": 0.2,
+  "hidden_size": 40,
+  "weight_decay": 0.0,
+  "val_kt_mean": 0.8845193254473215,
+  "val_kt_std": 0.011301092296383602
+}

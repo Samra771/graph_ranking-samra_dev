@@ -5,15 +5,15 @@ GNN Mixed-trained vs Degree Centrality
 Betweenness centrality, N=200 nodes, 200 test graphs
 
 BA Graphs:
-  GNN tau    : 0.933726 +/- 0.004831
-  Degree tau : 0.864397 +/- 0.010377
-  t-statistic: 99.8826
+  GNN tau    : 0.919627 +/- 0.006579
+  Degree tau : 0.864125 +/- 0.012603
+  t-statistic: 68.0004
   p-value    : 0.00000000
-  Cohen d    : 6.6809
+  Cohen d    : 4.4038
 
 GRP Graphs:
-  GNN tau    : 0.878979 +/- 0.009863
-  Degree tau : 0.865006 +/- 0.017575
-  t-statistic: 11.9321
-  p-value    : 0.00000000
-  Cohen d    : 0.7951
+  GNN tau    : 0.860241 +/- 0.011067
+  Degree tau : 0.864435 +/- 0.018333
+  t-statistic: -3.4258
+  p-value    : 0.00074464
+  Cohen d    : -0.2288

@@ -56,9 +56,9 @@ random.seed(SEED)
 GRAPH_NODES      = 200
 GRAPH_SPARSENESS = 0.15
 NUM_TEST_GRAPHS  = 200
-HIDDEN_LAYERS    = 20
-DROPOUT          = 0.2
-LEARNING_RATE    = 1e-4
+HIDDEN_LAYERS    = 40
+DROPOUT          = 0.4
+LEARNING_RATE    = 1e-3
 WEIGHT_DECAY     = 0.01
 MODEL_SIZE       = GRAPH_NODES
 
@@ -143,9 +143,12 @@ def load_bet_model(path):
     return model
 
 def load_close_model(path):
-    net   = GNN_Close(ninput=MODEL_SIZE, nhid=HIDDEN_LAYERS,
-                      dropout=DROPOUT, learning_rate=5e-4,
-                      weight_decay=WEIGHT_DECAY)
+    net   = GNN_Close(
+    ninput=MODEL_SIZE, nhid=40,
+    dropout=0.2,
+    learning_rate=1e-3,
+    weight_decay=0.0
+)
     model, _ = net.model_to_device(net)
     model    = model.to(device)
     if os.path.exists(path):
@@ -382,10 +385,10 @@ plt.close(fig)
 print(f"  Saved: fig_degree_vs_gnn_combined.png")
 
 # ═════════════════════════════════════════════════════════════════════════════
-# PRINT PAPER-READY TABLE AND KEY FINDINGS
+# PRINT TABLE AND KEY FINDINGS
 # ═════════════════════════════════════════════════════════════════════════════
 print(f"\n{'='*65}")
-print(f"  PAPER-READY COMPARISON TABLE")
+print(f"   COMPARISON TABLE")
 print(f"{'='*65}")
 print(f"\n  Betweenness Centrality:")
 print(f"  {'Method':<25} {'ER':>12} {'BA':>12} {'GRP':>12}")
@@ -436,15 +439,6 @@ print(f"""
     The GNN advantage is clearest where it matters most:
     on structured real-world-like graphs.
 
-  PAPER NARRATIVE (use this):
-    'On Erdos-Renyi random graphs, degree centrality provides a strong
-    baseline (tau = {deg_er:.3f}) because node degree correlates with both
-    betweenness and closeness on random graphs — a well-known property
-    of this graph model. However, on Barabasi-Albert scale-free graphs
-    degree degrades to tau = {deg_ba:.3f} and on community-structured GRP
-    graphs to tau = {deg_grp:.3f}. The mixed-trained GNN achieves tau = {gnn_ba:.3f}
-    on BA and tau = {gnn_grp:.3f} on GRP, substantially outperforming degree
-    on the graph types that best represent real-world networks.'
 """)
 
 print(f"  All figures saved to: {OUTPUT_DIR}/")

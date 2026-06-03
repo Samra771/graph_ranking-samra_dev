@@ -65,10 +65,10 @@ GRAPH_NODES      = 200
 GRAPH_SPARSENESS = 0.15
 TRAIN_GRAPHS     = 1600
 TEST_GRAPHS      = 200
-HIDDEN_LAYERS    = 20
-EPOCHS_QUICK     = 50     # Fewer epochs for cross-type training (faster)
-LEARNING_RATE    = 1e-4
-DROPOUT          = 0.2
+HIDDEN_LAYERS    = 40
+EPOCHS_QUICK     = 100     # Fewer epochs for cross-type training (faster)
+LEARNING_RATE    = 1e-3
+DROPOUT          = 0.4
 WEIGHT_DECAY     = 0.01
 BATCH_SIZE       = 16
 MODEL_SIZE       = GRAPH_NODES
@@ -112,10 +112,22 @@ def make_grp_graph(n, p):
         # Fallback to ER if GRP generation fails
         return nx.erdos_renyi_graph(n, p, directed=False)
 
+def make_ws_graph(n, p):
+    """
+    Watts-Strogatz small-world graph.
+    k = average degree, beta = rewiring probability.
+    Sparse with small-world properties — similar to
+    infrastructure and biological networks.
+    """
+    k    = max(2, int(p * n * 0.2))  # sparse — ~6 neighbours
+    beta = 0.1                        # low rewiring = structured
+    return nx.watts_strogatz_graph(n, k, beta)
+
 GRAPH_MAKERS = {
     "ER"  : make_er_graph,
     "BA"  : make_ba_graph,
     "GRP" : make_grp_graph,
+    "WS"  : make_ws_graph,    # ADD THIS
 }
 
 def get_adj(graph, model_size):

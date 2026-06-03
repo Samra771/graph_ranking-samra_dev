@@ -15,7 +15,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-OUTPUT_DIR = "./paper_figures_generalisation"
+OUTPUT_DIR = "./paper_figures_generalization"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -25,25 +25,25 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 results = {
     # Betweenness — ER trained model
-    "ER->ER (Betweenness)"    : (0.8544, 0.0104),
-    "ER->BA (Betweenness)"    : (0.8399, 0.0119),
-    "ER->GRP (Betweenness)"   : (0.7293, 0.0485),
+    "ER->ER (Betweenness)"    : (0.8608, 0.0107),
+    "ER->BA (Betweenness)"    : (0.8110, 0.0134),
+    "ER->GRP (Betweenness)"   : (0.5522, 0.0400),
 
     # Closeness — ER trained model
-    "ER->ER (Closeness)"      : (0.8260, 0.0112),
-    "ER->BA (Closeness)"      : (0.6037, 0.0273),
-    "ER->GRP (Closeness)"     : (0.0171, 0.0494),
+    "ER->ER (Closeness)"      : (0.8804, 0.0110),
+    "ER->BA (Closeness)"      : (0.8016, 0.0155),
+    "ER->GRP (Closeness)"     : (0.2846, 0.0564),
 
     # Betweenness — Mixed trained model
-    "Mixed->ER (Betweenness)" : (0.8867, 0.0095),
-    "Mixed->BA (Betweenness)" : (0.9334, 0.0048),
-    "Mixed->GRP (Betweenness)": (0.8781, 0.0103),
+    "Mixed->ER (Betweenness)" : (0.8784, 0.0091),
+    "Mixed->BA (Betweenness)" : (0.9198, 0.0060),
+    "Mixed->GRP (Betweenness)": (0.8613, 0.0115),
 }
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SAVE CSV WITH UTF-8 ENCODING (fixes Windows cp1252 error)
 # ═════════════════════════════════════════════════════════════════════════════
-csv_path = f"{OUTPUT_DIR}/generalisation_results.csv"
+csv_path = f"{OUTPUT_DIR}/generalization_results.csv"
 with open(csv_path, "w", encoding="utf-8") as f:
     f.write("Condition,Mean KT,Std KT\n")
     for key, (mean, std) in results.items():
@@ -88,7 +88,7 @@ ax.set_yticks(range(len(train_types)))
 ax.set_yticklabels(train_types, fontsize=11)
 ax.set_xlabel("Test Graph Type")
 ax.set_ylabel("Training Condition")
-ax.set_title("Betweenness Centrality: Generalisation Across Graph Types")
+ax.set_title("Betweenness Centrality: Generalization Across Graph Types")
 
 # Annotate each cell with the tau value
 for i in range(len(train_types)):
@@ -103,7 +103,7 @@ for i in range(len(train_types)):
                 fontsize=10, color=color, fontweight="bold")
 
 fig.tight_layout()
-path = f"{OUTPUT_DIR}/fig_generalisation_heatmap_betweenness.png"
+path = f"{OUTPUT_DIR}/fig_generalization_heatmap_betweenness.png"
 fig.savefig(path, dpi=300, bbox_inches="tight")
 plt.close(fig)
 print(f"Saved: {path}")
@@ -128,7 +128,7 @@ ax.set_yticks([0])
 ax.set_yticklabels(["ER-trained"], fontsize=11)
 ax.set_xlabel("Test Graph Type")
 ax.set_ylabel("Training Condition")
-ax.set_title("Closeness Centrality: Generalisation Across Graph Types")
+ax.set_title("Closeness Centrality: Generalization Across Graph Types")
 
 close_keys = ["ER->ER (Closeness)", "ER->BA (Closeness)", "ER->GRP (Closeness)"]
 for j, key in enumerate(close_keys):
@@ -140,7 +140,7 @@ for j, key in enumerate(close_keys):
             fontsize=10, color=color, fontweight="bold")
 
 fig.tight_layout()
-path = f"{OUTPUT_DIR}/fig_generalisation_heatmap_closeness.png"
+path = f"{OUTPUT_DIR}/fig_generalization_heatmap_closeness.png"
 fig.savefig(path, dpi=300, bbox_inches="tight")
 plt.close(fig)
 print(f"Saved: {path}")
@@ -180,7 +180,7 @@ for bar, val in zip(bars2, mix_means):
             f"{val:.3f}", ha="center", va="bottom", fontsize=9)
 
 fig.tight_layout()
-path = f"{OUTPUT_DIR}/fig_generalisation_bar_chart.png"
+path = f"{OUTPUT_DIR}/fig_generalization_bar_chart.png"
 fig.savefig(path, dpi=300, bbox_inches="tight")
 plt.close(fig)
 print(f"Saved: {path}")

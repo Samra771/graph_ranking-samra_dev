@@ -30,9 +30,9 @@ GRAPH_NODES      = 200
 GRAPH_SPARSENESS = 0.15
 NUM_GRAPHS       = 200
 MODEL_SIZE       = GRAPH_NODES
-HIDDEN           = 20
-DROPOUT          = 0.2
-LR               = 1e-4
+HIDDEN           = 40
+DROPOUT          = 0.4
+LR               = 1e-3
 WD               = 0.01
 
 device = torch.device("cpu")
@@ -150,10 +150,10 @@ gnn_ba, deg_ba, t_ba, p_ba, d_ba = run_ttest("BA", make_ba, model)
 gnn_grp, deg_grp, t_grp, p_grp, d_grp = run_ttest("GRP", make_grp, model)
 
 # ═════════════════════════════════════════════════════════════════════════════
-# STEP 4 — PRINT COMBINED SUMMARY FOR PAPER
+# STEP 4 — PRINT COMBINED SUMMARY 
 # ═════════════════════════════════════════════════════════════════════════════
 print(f"\n{'='*65}")
-print(f"  COMBINED RESULTS — copy these into your paper")
+print(f"  COMBINED RESULTS ")
 print(f"{'='*65}")
 print(f"""
   Table: Statistical Significance (GNN Mixed vs Degree Centrality)
@@ -163,36 +163,6 @@ print(f"""
   BA          | {gnn_ba.mean():.3f} +/- {gnn_ba.std():.3f}  | {deg_ba.mean():.3f} +/- {deg_ba.std():.3f}  | {t_ba:.2f}   | {"<0.0001" if p_ba < 0.0001 else f"{p_ba:.4f}"}    | {d_ba:.2f}
   GRP         | {gnn_grp.mean():.3f} +/- {gnn_grp.std():.3f}  | {deg_grp.mean():.3f} +/- {deg_grp.std():.3f}  | {t_grp:.2f}    | {"<0.0001" if p_grp < 0.0001 else f"{p_grp:.4f}"}    | {d_grp:.2f}
 
-  LaTeX for significance table (ready to paste):
-
-  \\begin{{table}}[H]
-  \\centering
-  \\caption{{Statistical significance: GNN (Mixed-trained) vs Degree
-  Centrality for betweenness approximation.
-  Paired $t$-test over 200 test graphs per graph type.}}
-  \\label{{tab:significance}}
-  \\begin{{tabular}}{{lcccc}}
-  \\toprule
-  \\textbf{{Graph}} & \\textbf{{GNN $\\tau$}} & \\textbf{{Degree $\\tau$}}
-    & \\textbf{{$t$-statistic}} & \\textbf{{$p$-value}} \\\\
-  \\midrule
-  BA (scale-free) & ${gnn_ba.mean():.3f} \\pm {gnn_ba.std():.3f}$ & ${deg_ba.mean():.3f} \\pm {deg_ba.std():.3f}$
-    & {t_ba:.2f} & $< 0.0001$ \\\\
-  GRP (community) & ${gnn_grp.mean():.3f} \\pm {gnn_grp.std():.3f}$ & ${deg_grp.mean():.3f} \\pm {deg_grp.std():.3f}$
-    & {t_grp:.2f} & $< 0.0001$ \\\\
-  \\bottomrule
-  \\end{{tabular}}
-  \\end{{table}}
-
-  LaTeX sentence for Section 4.4 (ready to paste):
-
-  A paired $t$-test over 200 BA test graphs confirms that the GNN
-  improvement is statistically significant ($t = {t_ba:.2f}$,
-  $p < 0.0001$, Cohen's $d = {d_ba:.2f}$). On GRP graphs the
-  difference is similarly significant ($t = {t_grp:.2f}$,
-  $p < 0.0001$, Cohen's $d = {d_grp:.2f}$). The very large effect
-  sizes confirm that the advantage is consistent across all test
-  graphs rather than driven by outliers.
 """)
 
 # ── Save results to text file ─────────────────────────────────────────────────

@@ -67,9 +67,9 @@ GRAPH_NODES      = 200
 GRAPH_SPARSENESS = 0.15
 NUM_TEST_GRAPHS  = 200    # Enough for statistical significance
 
-HIDDEN_LAYERS    = 20
-DROPOUT          = 0.2
-LEARNING_RATE    = 1e-4   # Betweenness
+HIDDEN_LAYERS    = 40
+DROPOUT          = 0.4
+LEARNING_RATE    = 1e-3   # Betweenness
 WEIGHT_DECAY     = 0.01
 MODEL_SIZE       = GRAPH_NODES
 
@@ -112,10 +112,12 @@ else:
     bet_model = None
 
 # Closeness GNN
+# Find the closeness model creation line and change to:
 close_network = GNN_Close(
-    ninput=MODEL_SIZE, nhid=HIDDEN_LAYERS,
-    dropout=DROPOUT, learning_rate=5e-4,
-    weight_decay=WEIGHT_DECAY
+    ninput=MODEL_SIZE, nhid=40,
+    dropout=0.2,          # closeness best config
+    learning_rate=1e-3,
+    weight_decay=0.0      # closeness best config
 )
 close_model, _ = close_network.model_to_device(close_network)
 close_model     = close_model.to(device)

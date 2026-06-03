@@ -53,7 +53,7 @@ HIDDEN_LAYERS    = 40        # GNN hidden layer size
 EPOCHS           = 100       # Training epochs
 LEARNING_RATE    = 1e-3      # Adam learning rate
 DROPOUT          = 0.4      # Dropout probability
-WEIGHT_DECAY     = 0.01      # L2 regularisation coefficient
+WEIGHT_DECAY     = 0.01      # L2 regularization coefficient
 BATCH_SIZE       = 16        # Graphs per batch update
 
 MODEL_SIZE       = GRAPH_NODES  # Must match node count

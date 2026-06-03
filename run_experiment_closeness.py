@@ -59,11 +59,11 @@ GRAPH_SPARSENESS = 0.15     # p=0.15 gives dense enough undirected graphs
 TOTAL_GRAPHS     = 5000
 TRAIN_RATIO      = 0.80
 
-HIDDEN_LAYERS    = 20
+HIDDEN_LAYERS    = 40 
 EPOCHS           = 50
-LEARNING_RATE    = 5e-4
+LEARNING_RATE    = 1e-3
 DROPOUT          = 0.2
-WEIGHT_DECAY     = 0.01
+WEIGHT_DECAY     = 0.0
 BATCH_SIZE       = 16
 
 MODEL_SIZE       = GRAPH_NODES
