@@ -1,20 +1,9 @@
 """
 experiment4_degree_vs_gnn.py
 ============================
-Critical additional experiment.
 
-Measures degree centrality performance on BA and GRP graphs,
-comparing it against your trained GNN models.
-
-On ER graphs, degree centrality correlates strongly with betweenness
-and closeness because ER graphs have no special structure.
-On BA (scale-free) and GRP (community) graphs this correlation breaks down:
-  - BA: hubs have very high degree but betweenness is more nuanced
-    (a hub's betweenness depends on whether it bridges communities)
-  - GRP: degree within a community does not indicate global centrality
-
-This experiment provides the key evidence that your GNN's advantage
-lies in generalisation to structured graphs, not in raw ER performance.
+This experiment provides the key evidence that GNN's advantage
+lies in generalization to structured graphs, not in raw ER performance.
 
 Run:
     python experiment4_degree_vs_gnn.py
@@ -421,27 +410,6 @@ gnn_ba   = np.mean(results_bet["BA"]["GNN (Mixed-trained)"])
 gnn_grp  = np.mean(results_bet["GRP"]["GNN (Mixed-trained)"])
 gnn_er_b = np.mean(results_bet["ER"]["GNN (ER-trained)"])
 
-print(f"""
-  KEY FINDING 1 — Degree on ER is strong (known phenomenon):
-    Degree tau = {deg_er:.3f} on ER graphs.
-    On random graphs, degree correlates with both betweenness and closeness.
-    This is expected and well-documented in network science literature.
-    State this explicitly in the paper — it is not a weakness.
-
-  KEY FINDING 2 — Degree degrades on structured graphs:
-    Degree tau on BA  = {deg_ba:.3f}
-    Degree tau on GRP = {deg_grp:.3f}
-    This confirms that degree is only a good proxy on random graphs.
-
-  KEY FINDING 3 — Mixed GNN outperforms degree on structured graphs:
-    GNN (Mixed) on BA  = {gnn_ba:.3f}  vs Degree {deg_ba:.3f}
-    GNN (Mixed) on GRP = {gnn_grp:.3f} vs Degree {deg_grp:.3f}
-    The GNN advantage is clearest where it matters most:
-    on structured real-world-like graphs.
-
-""")
-
 print(f"  All figures saved to: {OUTPUT_DIR}/")
-print(f"  Use for paper:")
 print(f"    fig_degree_vs_gnn_combined.png  -> Figure 4.5 (main comparison)")
 print(f"    degree_vs_gnn_results.csv       -> Table 3\n")

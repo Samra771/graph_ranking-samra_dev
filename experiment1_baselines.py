@@ -26,7 +26,7 @@ Output:
 Run:
   python experiment1_baselines.py
 
-Note: This script loads yourTRAINED models from:
+Note: This script loads your TRAINED models from:
   ./betweenness_model.pth
   ./closeness_model.pth
 Make sure you have run run_experiment.py and run_experiment_closeness.py

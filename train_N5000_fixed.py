@@ -1,14 +1,9 @@
 """
 train_N5000_fixed.py
 =====================
-FIXED VERSION — corrects the shape mismatch error.
+This script trains a GNN to approximate betweenness centrality on ER graphs with 5000 nodes.
 
-Bug that was fixed:
-  cents.append(to_array(bc, n))        # WRONG — n can be < 5000
-  cents.append(to_array(bc, MODEL_SIZE)) # CORRECT — always 5000
-
-Upload to Colab and run:
-    !python train_N5000_fixed.py
+ RUN:   !python train_N5000_fixed.py
 """
 
 import os

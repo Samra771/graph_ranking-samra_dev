@@ -1,8 +1,6 @@
 """
-experiment3_scalability_fixed.py
+experiment3_scalability.py
 =================================
-Fixed version of experiment 3.
-
 The original script was stuck on N=1000 because generating 800 training
 graphs with exact betweenness computation (O(N^3) per graph) takes hours.
 
@@ -15,7 +13,7 @@ Fix applied:
     The GNN forward pass time is independent of whether the model is trained.
     We only need inference time, not accuracy, for large N.
 
-This gives you everything needed for the paper:
+This gives us a complete scalability analysis with:
   - Accuracy (Kendall tau) at N = 50, 100, 200, 500
   - Timing at ALL sizes including N = 1000
   - Speedup curve across all sizes
@@ -27,7 +25,6 @@ Results you already have from the original run:
   N=500 : NX=1828.7ms, GNN=27.18ms, Speedup=67.3x, KT=0.712
   N=1000: need timing only
 
-Run this script to get N=1000 timing and generate all paper figures.
 """
 
 import os
@@ -64,8 +61,7 @@ print(f"  Device: {device}")
 print(f"{'='*60}\n")
 
 # ═════════════════════════════════════════════════════════════════════════════
-# PASTE YOUR ALREADY-COMPUTED RESULTS HERE
-# Taken directly from your terminal output
+# EXISTING RESULTS FROM ORIGINAL RUN (N=50, 100, 200, 500)
 # ═════════════════════════════════════════════════════════════════════════════
 
 existing_results = {

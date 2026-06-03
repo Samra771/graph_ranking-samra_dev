@@ -1,7 +1,7 @@
 """
 run_experiment.py
 =================
-Complete experiment script for GNN Betweenness Centrality Approximation.
+Complete GNN Betweenness Centrality Approximation.
 
 This script:
 1. Generates 2000 Erdos-Renyi graphs with 200 nodes
@@ -42,7 +42,7 @@ np.random.seed(SEED)
 random.seed(SEED)
 
 # ═════════════════════════════════════════════════════════════════════════════
-# EXPERIMENT SETTINGS — these match your paper exactly
+# EXPERIMENT SETTINGS 
 # ═════════════════════════════════════════════════════════════════════════════
 GRAPH_NODES      = 200       # Number of nodes per graph
 GRAPH_SPARSENESS = 0.15      # Edge probability for Erdos-Renyi (p = 0.15)
@@ -368,7 +368,7 @@ pred_plot      = predictions_all[best_idx]
 truth_plot     = ground_truths_all[best_idx]
 n_plot         = nodes_test[best_idx]
 
-# Normalise GNN predictions to [0,1] range for fair visual comparison
+# Normalize GNN predictions to [0,1] range for fair visual comparison
 pred_min, pred_max = pred_plot.min(), pred_plot.max()
 if pred_max - pred_min > 1e-9:
     pred_plot_norm = (pred_plot - pred_min) / (pred_max - pred_min)

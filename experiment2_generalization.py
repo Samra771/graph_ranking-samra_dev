@@ -22,10 +22,6 @@ Three experimental conditions:
   Condition C: Train ER - Test GRP      (out-of-distribution generalization)
   Condition D: Train Mixed - Test Mixed (cross-type training)
 
-Output:
-  - Generalization table (CSV)
-  - Heatmap of tau across train/test type combinations
-  - Saved to ./paper_figures_generalization/
 
 Run:
   python experiment2_generalization.py
