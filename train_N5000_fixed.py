@@ -352,7 +352,6 @@ with open(f"{OUTPUT_DIR}/results_N5000_summary.txt",
     f.write(f"GPU: {gpu_name}\n")
 
 print("="*55)
-print("  COMPLETE — paste into Chapter 4 Section 4.9")
 print("="*55)
 print(f"  Test KT : {test_kt:.4f} +/- {test_std:.4f}")
 print(f"  Labels  : EXACT")
