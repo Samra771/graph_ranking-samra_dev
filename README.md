@@ -14,7 +14,7 @@ https://github.com/sunilkmaurya/GNN_Ranking
 ## What This Repository Does
 
 Computing betweenness and closeness centrality exactly
-requires O(N³) operations — prohibitively slow for large
+requires O(N³) operations, prohibitively slow for large
 networks. This repository trains Graph Neural Networks to
 approximate both measures from graph structure alone,
 reducing inference to a single forward pass regardless of
