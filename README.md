@@ -3,7 +3,8 @@
 **Graph Neural Networks for Efficient Node Centrality
 Approximation in Complex Networks**
 
-> Samra Sana, Giorgio Mantica, and Saul Imbrici 
+> Samra Sana, Giorgio Mantica, and Saul Imbrici
+
 > Università degli Studi dell'Insubria, 2026.
 
 Adapted from Maurya et al. (2021):
