@@ -1,90 +1,83 @@
-# GNN Centrality Approximation
+# Learning Transferable Centrality Representations with Graph Neural Networks
 
-**Graph Neural Networks for Efficient Node Centrality
-Approximation in Complex Networks**
+**Samra Sana, Giorgio Mantica, and Saul Imbrici**
+Università degli Studi dell'Insubria, 2026
 
-> Samra Sana, Giorgio Mantica, and Saul Imbrici
-> Università degli Studi dell'Insubria, 2026.
+Implementation accompanying the paper:
 
-Adapted from Maurya et al. (2021):
-https://github.com/sunilkmaurya/GNN_Ranking
+> *Learning Transferable Centrality Representations with Graph Neural Networks: Generalization Across Network Topologies*
 
 ---
 
-## What This Repository Does
+## Overview
 
-Computing betweenness and closeness centrality exactly
-requires O(N³) operations — prohibitively slow for large
-networks. This repository trains Graph Neural Networks to
-approximate both measures from graph structure alone,
-reducing inference to a single forward pass regardless of
-network size.
+This repository implements Graph Neural Networks (GNNs) for approximating **betweenness** and **closeness centrality** directly from graph structure.
 
-Two GNN models are implemented. The betweenness model uses
-a dual-pathway architecture that processes the adjacency
-matrix and its transpose in parallel, capturing both outgoing
-and incoming geodesic flow. The closeness model uses a single
-pathway with degree-normalised adjacency preprocessing.
-Both are trained using pairwise ranking loss, which directly
-optimises node ordering rather than absolute centrality values.
+The models are trained on synthetic networks using pairwise ranking loss and evaluated on:
 
-Models trained on synthetic Erdős-Rényi graphs generalize
-to Barabási-Albert scale-free networks and community-structured
-graphs without retraining. A dedicated model trained at
-N = 5,000 nodes achieves Kendall τ = 0.938 with exact labels,
-and GNN inference is 91× faster than exact computation at
-N = 1,000 nodes.
+* Erdős–Rényi (ER) graphs
+* Barabási–Albert (BA) scale-free graphs
+* Gaussian Random Partition (GRP) community graphs
+* Real-world networks
+
+The study focuses on **generalization across graph topologies**, demonstrating that training on structurally diverse graph families improves transferability and robustness.
 
 ---
 
-## Requirements
+## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Python 3.10+, PyTorch 2.0+, NetworkX 3.0+
+Requirements:
 
----
+* Python 3.10+
+* PyTorch 2.0+
+* NetworkX 3.0+
 
-## Reproducing Results
-
-Run scripts in this order:
+## Reproducing Experiments
 
 ```bash
-# Train primary models
-python run_experiment.py                  # betweenness (N=200)
-python run_experiment_closeness.py        # closeness (N=200)
+# Train models
+python run_experiment.py
+python run_experiment_closeness.py
 
-# Hyperparameter selection
-python hyperparameter_search.py           # betweenness grid search
-python hyperparameter_search_closeness.py # closeness grid search
+# Hyperparameter search
+python hyperparameter_search.py
+python hyperparameter_search_closeness.py
 
-# Experiments
-python experiment1_baselines.py           # vs random, degree, Brandes
-python experiment2_generalization.py      # ER → BA, GRP, mixed training
-python experiment3_scalability_fixed.py   # timing across N=50 to 1000
-python experiment4_degree_vs_gnn.py       # degree centrality comparison
+# Evaluation
+python experiment1_baselines.py
+python experiment2_generalization.py
+python experiment3_scalability_fixed.py
+python experiment4_degree_vs_gnn.py
 
-# Large-scale training (GPU required)
-python train_N5000_fixed.py               # betweenness at N=5,000
+# Large-scale experiment (N = 5000)
+python train_N5000_fixed.py
 ```
 
-Each script saves figures and a numerical results summary to
-its own output folder. Full instructions and expected outputs
-are documented in the paper.
+---
+
+## Main Results
+
+| Experiment                   | Kendall τ     |
+| ---------------------------- | ------------- |
+| Betweenness (ER)             | 0.861 ± 0.011 |
+| Closeness (ER)               | 0.894 ± 0.011 |
+| Mixed-trained → BA           | 0.920 ± 0.006 |
+| Mixed-trained → GRP          | 0.861 ± 0.012 |
+| Betweenness (N = 5000)       | 0.938 ± 0.001 |
+| Inference speedup (N = 1000) | 91×           |
 
 ---
 
-## Key Results
+## Citation
 
-| Experiment | Kendall tau |
-|---|---|
-| Betweenness (N=200, ER test) | 0.851 ± 0.011 |
-| Closeness (N=200, ER test) | 0.894 ± 0.011 |
-| Betweenness (N=5,000, exact labels) | 0.938 ± 0.001 |
-| Mixed-trained → BA (scale-free) | 0.920 ± 0.006 |
-| Mixed-trained → GRP (community) | 0.861 ± 0.012 |
-| Inference speedup at N=1,000 | 91× vs NetworkX exact |
+If you use this code, please cite the associated paper.
 
----
+```text
+Sana, S., Mantica, G., and Imbrici, S.
+Learning Transferable Centrality Representations with Graph Neural Networks:
+Generalization Across Network Topologies, 2026.
+```
