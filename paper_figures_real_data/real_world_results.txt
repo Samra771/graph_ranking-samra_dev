@@ -1,0 +1,30 @@
+Real-World Network Validation Results
+=======================================================
+
+Models:
+  Betweenness: ./betweenness_model_N5000.pth (N=5000)
+  Closeness  : ./closeness_model.pth (N=200)
+  Mode       : Zero-shot (no retraining)
+
+Synthetic baselines:
+  Betweenness tau : 0.851 +/- 0.011
+  Closeness tau   : 0.894 +/- 0.011
+
+C. Elegans Neural
+  Nodes    : 131
+  Edges    : 687
+  Bet KT   : 0.6543 +/- 0.0000
+  Close KT : 0.2650 +/- 0.0000
+
+Email-Eu-Core
+  Nodes    : 986
+  Edges    : 16687
+  Bet KT   : 0.7823 +/- 0.0000
+  Close KT : 0.7029 +/- 0.0000
+
+Power Grid (Western US)
+  Nodes    : 4941
+  Edges    : 6594
+  Bet KT   : 0.6027 +/- 0.0000
+  Close KT : 0.1080 +/- 0.0000
+
